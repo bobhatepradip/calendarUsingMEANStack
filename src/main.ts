@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppModule } from './app/app.module';
 import { AppComponent } from './app/app.component';
+import { environment } from './environments/environment';
 
 @NgModule({
   imports: [
@@ -31,7 +32,7 @@ import { AppComponent } from './app/app.component';
 })
 export class BootstrapModule {}
 
-platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
+platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {
   // Ensure Angular destroys itself on hot reloads.
   if (window['ngRef']) {
     window['ngRef'].destroy();

@@ -8,12 +8,24 @@
 // export class AppComponent {
 //   title = 'fg';
 // }
+// 'use strict';
+// import * as fs from "fs"
+
+// let student = {  
+//     name: 'Mike',
+//     age: 23, 
+//     gender: 'Male',
+//     department: 'English',
+//     car: 'Honda' 
+// };
+
+// let data = JSON.stringify(student);  
+// fs.writeFileSync('./src/app/data.json', data);
 import {
   Component,
   ChangeDetectionStrategy,
   ViewChild,
-  TemplateRef
-} from '@angular/core';
+  TemplateRef,OnInit} from '@angular/core';
 import {
   startOfDay,
   endOfDay,
@@ -26,6 +38,9 @@ import {
 } from 'date-fns';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ServiceService } from './service.service';
+import { HttpClient } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import {
   CalendarEvent,
   CalendarEventAction,
@@ -38,12 +53,12 @@ const colors: any = {
     primary: '#ad2121',
     secondary: '#FAE3E3'
   },
-  blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF'
-  },
   yellow: {
     primary: '#e3bc08',
+    secondary: '#FDF1BA'
+  },
+  green: {
+    primary: '#008000',
     secondary: '#FDF1BA'
   }
 };
@@ -56,6 +71,9 @@ const colors: any = {
   
 })
 export class AppComponent {
+  
+  constructor (private httpService: HttpClient) { }
+
   @ViewChild('modalContent')
   modalContent: TemplateRef<any>;
 
@@ -63,13 +81,72 @@ export class AppComponent {
 
   CalendarView = CalendarView;
 
-  viewDate: Date = new Date();
+  viewDate: Date = new Date(Date.parse("2018-10-04T02:15:12.356Z"));
 
   modalData: {
     action: string;
     event: CalendarEvent;
   };
-
+  event2:CalendarEvent[];
+  events: CalendarEvent[]=[
+    
+  ];
+  st:any;
+  parsedJSON: any;
+  d:any;
+  ngOnInit():any 
+    {
+      this.httpService.get('./src/app/data.json').subscribe(
+        data=>{
+          this.events=data as CalendarEvent[];
+          console.log(this.events)
+          this.st=JSON.stringify(this.events);
+          this.parsedJSON = JSON.parse(this.st);
+         for (var i=0;i<this.parsedJSON.length;i++) {
+              this.parsedJSON[i].start=new Date(Date.parse(this.parsedJSON[i].start));
+              this.parsedJSON[i].end=new Date(Date.parse(this.parsedJSON[i].end));
+              this.parsedJSON[i].actions=this.actions;
+            
+              this.d=this.parsedJSON[i].title;
+              if(this.parsedJSON[i].color=="red")
+                this.parsedJSON[i].color=colors.red;
+              if(this.parsedJSON[i].color=="yellow")
+                this.parsedJSON[i].color=colors.yellow;
+              if(this.parsedJSON[i].color=="green")
+                this.parsedJSON[i].color=colors.green;
+           }
+           this.events=this.parsedJSON as CalendarEvent[];
+           return (this.events);
+        }
+        
+      )
+      console.log(this.events);
+      
+  }
+  
+  //getresult():CalendarEvent[]{
+    // this.httpService.get('./src/app/data.json').subscribe(
+    //   data=>{
+    //     this.events=data as CalendarEvent[];
+    //     console.log(this.events)
+    //     this.st=JSON.stringify(this.events);
+    //     this.parsedJSON = JSON.parse(this.st);
+    //    for (var i=0;i<this.parsedJSON.length;i++) {
+    //         this.parsedJSON[i].start=new Date(Date.parse(this.parsedJSON[i].start));
+    //         this.parsedJSON[i].end=new Date(Date.parse(this.parsedJSON[i].end));
+    //         if(this.parsedJSON[i].color=="red")
+    //           this.parsedJSON[i].color=colors.red;
+    //         if(this.parsedJSON[i].color=="yellow")
+    //           this.parsedJSON[i].color=colors.yellow;
+    //      }
+    //      this.events=this.parsedJSON as CalendarEvent[];
+    //   }
+      
+    // )
+    // console.log(this.events);
+    // return this.events;
+    
+  //}
   actions: CalendarEventAction[] = [
     {
       label: '<i class="fa fa-fw fa-pencil"></i>',
@@ -88,57 +165,45 @@ export class AppComponent {
 
   refresh: Subject<any> = new Subject();
 
-  events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      },
-      draggable: true
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue,
-      allDay: true
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: new Date(),
-      title: 'A draggable and resizable event',
-      color: colors.yellow,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      },
-      draggable: true
-    }
-  ];
+
+  //events:this.arrBirds;
+    evens: CalendarEvent[] = this.events;
+  //   {
+  //     start: subDays(endOfMonth(new Date()), 3),
+  //     end: addDays(endOfMonth(new Date()), 3),
+  //     title: 'A long event that spans 2 months',
+  //     color: colors.blue,
+  //     allDay: true
+  //   },
+  //   {
+  //     start: addHours(startOfDay(new Date()), 2),
+  //     end: new Date(),
+  //     title: 'A draggable and resizable event',
+  //     color: colors.yellow,
+  //     actions: this.actions,
+  //     resizable: {
+  //       beforeStart: true,
+  //       afterEnd: true
+  //     },
+  //     draggable: true
+  //   }]
+  
+
+
 
   activeDayIsOpen: boolean = true;
 
-  constructor(private modal: NgbModal) {}
 
+  dayClicked2(){
+    console.log(this.events);
+  }
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+    console.log(this.events);
     if (isSameMonth(date, this.viewDate)) {
       this.viewDate = date;
       if (
         (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        events.length === 0
+        this.events.length === 0
       ) {
         this.activeDayIsOpen = false;
       } else {
@@ -160,7 +225,8 @@ export class AppComponent {
 
   handleEvent(action: string, event: CalendarEvent): void {
     this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
+    console.log(this.events);
+    //this.modal.open(this.modalContent, { size: 'lg' });
   }
 
   addEvent(): void {

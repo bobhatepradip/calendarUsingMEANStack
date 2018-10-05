@@ -48,7 +48,7 @@
     </div>
   </div>
   <div class="col-md-4">
-    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+    <h2>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h2>
   </div>
   <div class="col-md-4">
     <div class="btn-group">
@@ -74,8 +74,11 @@
   </div>
 </div>
 <br>
+
 <div [ngSwitch]="view">
+    
   <mwl-calendar-month-view
+  
     *ngSwitchCase="CalendarView.Month"
     [viewDate]="viewDate"
     [events]="events"
@@ -83,8 +86,11 @@
     [activeDayIsOpen]="activeDayIsOpen"
     (dayClicked)="dayClicked($event.day)"
     (eventClicked)="handleEvent('Clicked', $event.event)"
-    (eventTimesChanged)="eventTimesChanged($event)">
+    (eventTimesChanged)="eventTimesChanged($event)"  
+    >
+    
   </mwl-calendar-month-view>
+  <!-- <td attr.data-title="{{d}}">jkjkjhkjh</td> -->
   <mwl-calendar-week-view
     *ngSwitchCase="CalendarView.Week"
     [viewDate]="viewDate"
@@ -105,8 +111,8 @@
 
 <br><br><br>
 
-<h3>
-  Edit events
+ <h3 style="display:none;">
+  Edit events****
   <button
     class="btn btn-primary pull-right"
     (click)="addEvent()">
@@ -115,7 +121,7 @@
   <div class="clearfix"></div>
 </h3>
 
-<table class="table table-bordered">
+<table class="table table-bordered" style="display:none;">
 
   <thead>
     <tr>
@@ -184,9 +190,7 @@
           Delete
         </button>
       </td>
-    </tr>
+    </tr> 
   </tbody>
 
 </table>
-
-
