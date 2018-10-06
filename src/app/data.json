@@ -1,20 +1,5 @@
-[
+{"Leave":[
   
-  {
-    "start": "2018-10-10T02:15:12.356Z",
-    "end": "2018-10-12T02:15:12.356Z",
-    "title": "Abhipsha Dash",
-    "color": "green",
-    "actions": "actions",
-    "allDay": "true"
-  },
-  {
-    "start": "2018-10-10T02:15:12.356Z",
-    "title": "Monika",
-    "color": "green",
-    "actions": "actions",
-    "allDay": "true"
-  },
   {
     "start": "2018-10-17T02:15:12.356Z",
     "end": "2018-10-18T02:15:12.356Z",
@@ -24,8 +9,16 @@
     "allDay": "true"
   },
   {
-    "start": "2018-10-11T02:15:12.356Z",
-    "end": "2018-10-11T02:15:12.356Z",
+    "start": "2018-10-12T02:15:12.356Z",
+    "end": "2018-10-12T02:15:12.356Z",
+    "title": "Monika",
+    "color": "red",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  {
+    "start": "2018-11-15T02:15:12.356Z",
+    "end": "2018-11-16T02:15:12.356Z",
     "title": "Monika",
     "color": "red",
     "actions": "actions",
@@ -49,6 +42,14 @@
   },
   {
     "start": "2018-11-05T02:15:12.356Z",
+    "end": "2018-11-07T02:15:12.356Z",
+    "title": "Tarun",
+    "color": "red",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  {
+    "start": "2018-11-09T02:15:12.356Z",
     "end": "2018-11-09T02:15:12.356Z",
     "title": "Tarun",
     "color": "red",
@@ -57,6 +58,14 @@
   },
   {
     "start": "2018-11-06T02:15:12.356Z",
+    "end": "2018-11-07T02:15:12.356Z",
+    "title": "Karthik",
+    "color": "red",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  {
+    "start": "2018-11-09T02:15:12.356Z",
     "end": "2018-11-09T02:15:12.356Z",
     "title": "Karthik",
     "color": "red",
@@ -64,12 +73,184 @@
     "allDay": "true"
   },
   {
-    "start": "2018-11-06T02:15:12.356Z",
+    "start": "2018-11-07T02:15:12.356Z",
     "end": "2018-11-07T02:15:12.356Z",
     "title": "Chitra",
     "color": "red",
     "actions": "actions",
     "allDay": "true"
+  },
+  {
+    "start": "2018-11-05T02:15:12.356Z",
+    "end": "2018-11-05T02:15:12.356Z",
+    "title": "Chitra",
+    "color": "red",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  
+  {
+    "start": "2018-11-07T02:15:12.356Z",
+    "end": "2018-11-07T02:15:12.356Z",
+    "title": "Pradip",
+    "color": "red",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  {
+    "start": "2018-11-09T02:15:12.356Z",
+    "title": "Neerav",
+    "color": "red",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  {
+    "start": "2018-11-06T02:15:12.356Z",
+    "end": "2018-11-06T02:15:12.356Z",
+    "title": "Holiday(Chennai)",
+    "color": "grey",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  {
+    "start": "2018-11-08T02:15:12.356Z",
+    "end": "2018-11-08T02:15:12.356Z",
+    "title": "Holiday(Bangalore)",
+    "color": "grey",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  {
+    "start": "2018-11-08T02:15:12.356Z",
+    "end": "2018-11-08T02:15:12.356Z",
+    "title": "Holiday(Intel)",
+    "color": "grey",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  {
+    "start": "2018-11-01T02:15:12.356Z",
+    "end": "2018-11-01T02:15:12.356Z",
+    "title": "Holiday(Intel)",
+    "color": "grey",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  {
+    "start": "2018-10-18T02:15:12.356Z",
+    "end": "2018-10-18T02:15:12.356Z",
+    "title": "Holiday(Intel)",
+    "color": "grey",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  {
+    "start": "2018-10-19T02:15:12.356Z",
+    "end": "2018-10-19T02:15:12.356Z",
+    "title": "Holiday(Bangalore)",
+    "color": "grey",
+    "actions": "actions",
+    "allDay": "true"
   }
+],
+"wfh":[
+  {
+    "start": "2018-10-10T02:15:12.356Z",
+    "end": "2018-10-12T02:15:12.356Z",
+    "title": "Abhipsha Dash",
+    "color": "green",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  {
+    "start": "2018-10-10T02:15:12.356Z",
+    "title": "Monika",
+    "color": "green",
+    "actions": "actions",
+    "allDay": "true"
+  },{
+    "start": "2018-10-11T02:15:12.356Z",
+    "end": "2018-10-11T02:15:12.356Z",
+    "title": "Monika",
+    "color": "green",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  
+  {
+    "start": "2018-11-09T02:15:12.356Z",
+    "end": "2018-11-09T02:15:12.356Z",
+    "title": "Pradip",
+    "color": "green",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  {
+    "start": "2018-11-07T02:15:12.356Z",
+    "end": "2018-11-07T02:15:12.356Z",
+    "title": "Neerav",
+    "color": "green",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  {
+    "start": "2018-11-05T02:15:12.356Z",
+    "end": "2018-11-06T02:15:12.356Z",
+    "title": "Neerav",
+    "color": "green",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  {
+    "start": "2018-11-06T02:15:12.356Z",
+    "end": "2018-11-06T02:15:12.356Z",
+    "title": "Holiday(Chennai)",
+    "color": "grey",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  {
+    "start": "2018-11-08T02:15:12.356Z",
+    "end": "2018-11-08T02:15:12.356Z",
+    "title": "Holiday(Bangalore)",
+    "color": "grey",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  {
+    "start": "2018-11-08T02:15:12.356Z",
+    "end": "2018-11-08T02:15:12.356Z",
+    "title": "Holiday(Intel)",
+    "color": "grey",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  {
+    "start": "2018-11-01T02:15:12.356Z",
+    "end": "2018-11-01T02:15:12.356Z",
+    "title": "Holiday(Intel)",
+    "color": "grey",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  {
+    "start": "2018-10-18T02:15:12.356Z",
+    "end": "2018-10-18T02:15:12.356Z",
+    "title": "Holiday(Intel)",
+    "color": "grey",
+    "actions": "actions",
+    "allDay": "true"
+  },
+  {
+    "start": "2018-10-19T02:15:12.356Z",
+    "end": "2018-10-19T02:15:12.356Z",
+    "title": "Holiday(Bangalore)",
+    "color": "grey",
+    "actions": "actions",
+    "allDay": "true"
+  }
+],
+"holiday":[
   
 ]
+}

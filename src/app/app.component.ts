@@ -60,6 +60,10 @@ const colors: any = {
   green: {
     primary: '#008000',
     secondary: '#FDF1BA'
+  },
+  grey: {
+    primary:"#696969",
+    secondary:"#696969"
   }
 };
 
@@ -88,42 +92,93 @@ export class AppComponent {
     event: CalendarEvent;
   };
   event2:CalendarEvent[];
-  events: CalendarEvent[]=[
-    
-  ];
+  events: CalendarEvent[];
+  evens: CalendarEvent[];
   st:any;
+  count:any=0;
   parsedJSON: any;
   d:any;
   ngOnInit():any 
     {
-      this.httpService.get('./src/app/data.json').subscribe(
-        data=>{
-          this.events=data as CalendarEvent[];
-          console.log(this.events)
-          this.st=JSON.stringify(this.events);
-          this.parsedJSON = JSON.parse(this.st);
-         for (var i=0;i<this.parsedJSON.length;i++) {
-              this.parsedJSON[i].start=new Date(Date.parse(this.parsedJSON[i].start));
-              this.parsedJSON[i].end=new Date(Date.parse(this.parsedJSON[i].end));
-              this.parsedJSON[i].actions=this.actions;
-            
-              this.d=this.parsedJSON[i].title;
-              if(this.parsedJSON[i].color=="red")
-                this.parsedJSON[i].color=colors.red;
-              if(this.parsedJSON[i].color=="yellow")
-                this.parsedJSON[i].color=colors.yellow;
-              if(this.parsedJSON[i].color=="green")
-                this.parsedJSON[i].color=colors.green;
-           }
-           this.events=this.parsedJSON as CalendarEvent[];
+     
+      if(this.count==0){
+        this.httpService.get('./src/app/data.json').subscribe(
+          data=>{
+            this.events=(data.Leave as CalendarEvent[] );
+            //this.evens=data.holiday as CalendarEvent[];
+            //this.events.push(data.holiday);
+            //this.events.push(this.evens as CalendarEvent[]);
+            this.events.sort(function (a, b) {
+              return a.title.localeCompare(b.title);
+          });
+            console.log(this.events)
+            this.st=JSON.stringify(this.events);
+            this.parsedJSON = JSON.parse(this.st);
+           for (var i=0;i<this.parsedJSON.length;i++) {
+                this.parsedJSON[i].start=new Date(Date.parse(this.parsedJSON[i].start));
+                this.parsedJSON[i].end=new Date(Date.parse(this.parsedJSON[i].end));
+                this.d=this.parsedJSON[i].title;
+                if(this.parsedJSON[i].color=="red")
+                  this.parsedJSON[i].color=colors.red;
+                if(this.parsedJSON[i].color=="yellow")
+                  this.parsedJSON[i].color=colors.yellow;
+                if(this.parsedJSON[i].color=="green")
+                  this.parsedJSON[i].color=colors.green;
+                
+             }
+             this.events=this.parsedJSON as CalendarEvent[];
+           this.refresh.next();
            return (this.events);
-        }
+            })
         
-      )
+        this.count=1;
+        
+      }
+      
+      else if(this.count==1){
+        this.httpService.get('./src/app/data.json').subscribe(
+          data=>{
+            this.events=(data.wfh as CalendarEvent[] );
+            //this.evens=data.holiday as CalendarEvent[];
+            //this.events.push(data.holiday);
+            //this.events.push(this.evens as CalendarEvent[]);
+            this.events.sort(function (a, b) {
+              return a.title.localeCompare(b.title);
+          });
+            console.log(this.events)
+            this.st=JSON.stringify(this.events);
+            this.parsedJSON = JSON.parse(this.st);
+           for (var i=0;i<this.parsedJSON.length;i++) {
+                this.parsedJSON[i].start=new Date(Date.parse(this.parsedJSON[i].start));
+                this.parsedJSON[i].end=new Date(Date.parse(this.parsedJSON[i].end));
+                this.d=this.parsedJSON[i].title;
+                if(this.parsedJSON[i].color=="red")
+                  this.parsedJSON[i].color=colors.red;
+                if(this.parsedJSON[i].color=="yellow")
+                  this.parsedJSON[i].color=colors.yellow;
+                if(this.parsedJSON[i].color=="green")
+                  this.parsedJSON[i].color=colors.green;
+                
+             }
+             this.events=this.parsedJSON as CalendarEvent[];
+           this.refresh.next();
+           return (this.events);
+            })  
+        this.count=0;
+        
+      }
+           
+           
+        
+        
+      
       console.log(this.events);
       
+      
   }
-  
+  fg(){
+    alert("Inside fg");
+  }
   //getresult():CalendarEvent[]{
     // this.httpService.get('./src/app/data.json').subscribe(
     //   data=>{
@@ -147,27 +202,12 @@ export class AppComponent {
     // return this.events;
     
   //}
-  actions: CalendarEventAction[] = [
-    {
-      label: '<i class="fa fa-fw fa-pencil"></i>',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
-      }
-    },
-    {
-      label: '<i class="fa fa-fw fa-times"></i>',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter(iEvent => iEvent !== event);
-        this.handleEvent('Deleted', event);
-      }
-    }
-  ];
+  
 
   refresh: Subject<any> = new Subject();
 
 
   //events:this.arrBirds;
-    evens: CalendarEvent[] = this.events;
   //   {
   //     start: subDays(endOfMonth(new Date()), 3),
   //     end: addDays(endOfMonth(new Date()), 3),
@@ -243,4 +283,5 @@ export class AppComponent {
     });
     this.refresh.next();
   }
+  
 }

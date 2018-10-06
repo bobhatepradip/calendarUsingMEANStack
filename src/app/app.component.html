@@ -74,6 +74,11 @@
   </div>
 </div>
 <br>
+<div ng-controller="ngShowExample">
+  <button ng-model="status" ng-init="status=false" (click)="ngOnInit()">Toggle Button</button>
+  <p  ng-show="status">Showed</p>
+  <p> {{' Status: '  + status }}</p>
+</div>
 
 <div [ngSwitch]="view">
     
